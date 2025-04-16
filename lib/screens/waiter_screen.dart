@@ -10,7 +10,6 @@ import 'package:waiter_app/widgets/title_card.dart';
 import '../model/order.dart';
 import '../providers/orders_provider.dart';
 
-
 class WaiterScreen extends ConsumerWidget {
   const WaiterScreen({super.key});
 
@@ -26,7 +25,8 @@ class WaiterScreen extends ConsumerWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => SellScreen(orderNumber: orderNumber), // Pass orderNumber to SellScreen
+          builder: (context) => SellScreen(
+              orderNumber: orderNumber), // Pass orderNumber to SellScreen
         ),
       );
     }
@@ -35,10 +35,7 @@ class WaiterScreen extends ConsumerWidget {
       final newOrder = Order(
           tableId: tableId,
           orderedMeals: {}); // No need to specify order number
-      ref
-          .read(ordersProvider.notifier)
-          .addOrder(newOrder)
-          .then((orderNumber) {
+      ref.read(ordersProvider.notifier).addOrder(newOrder).then((orderNumber) {
         // This block will execute after the order is added and the order number is available
         if (context.mounted) {
           openSellScreen(context, orderNumber);
@@ -101,20 +98,3 @@ class WaiterScreen extends ConsumerWidget {
     );
   }
 }
-
-// SizedBox(
-//   width: cardSize,
-//   height: cardSize - cardSize / 4,
-//   child: Card(
-//     shape: RoundedRectangleBorder(
-//       borderRadius: BorderRadius.circular(8.0),
-//     ),
-//     color: Colors.amber.shade100,
-//     child: Center(
-//       child: Text(
-//         'Основной зал',
-//         style: Theme.of(context).textTheme.bodyLarge,
-//       ),
-//     ),
-//   ),
-// ),

@@ -81,9 +81,7 @@ class MealData {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other.runtimeType != runtimeType) return false;
-    return other is MealData &&
-        other.name == name &&
-        other.price == price;
+    return other is MealData && other.name == name && other.price == price;
   }
 
   @override

@@ -18,5 +18,4 @@ class MealCardParameters {
   final FontStyle priceFont;
   final FontStyle storeFont;
   final FontStyle nameFont;
-
 }

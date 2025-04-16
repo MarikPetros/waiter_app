@@ -5,7 +5,10 @@ class ShiftsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Смена', style: TextStyle(color: Colors.black),));
+    return const Center(
+        child: Text(
+      'Смена',
+      style: TextStyle(color: Colors.black),
+    ));
   }
-
 }

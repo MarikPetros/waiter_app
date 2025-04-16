@@ -18,7 +18,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     return CommonScaffold(
       appBar: CustomAppBar(
         title: widget.title,
@@ -26,34 +25,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         showDrawerIcon: true,
       ),
       body: Container(),
-      // body: FutureBuilder<void>(
-      //   future: Future.wait([
-      //     ref.read(mealsProvider.notifier).loadMeals(),
-      //   ]),
-      //   builder: (context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.waiting) {
-      //       return const Center(child: CircularProgressIndicator());
-      //     } else if (snapshot.hasError) {
-      //       return Center(
-      //         child: Text(
-      //           'Error: ${snapshot.error != null ? snapshot.error.toString() : 'Unknown error'}',
-      //         ),
-      //       );
-      //     } else {
-      //       // Database is populated, access data using ref.watch(mealsProvider)
-      //       final meals = ref.watch(mealsProvider);
-      //       // ... build your UI with the meals data
-      //       return ListView.builder(
-      //         shrinkWrap: true,
-      //         itemCount: meals.length,
-      //         itemBuilder: (ctx, index) => MealCard(
-      //           cardSize: cardSize,
-      //           meal: meals[index],
-      //         ),
-      //       );
-      //     }
-      //   },
-      // ),
     );
   }
 
@@ -71,4 +42,3 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
   }
 }
-

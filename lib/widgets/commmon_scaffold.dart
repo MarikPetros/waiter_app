@@ -9,12 +9,11 @@ import 'package:intl/intl.dart';
 import '../screens/cashier_screen.dart';
 
 class CommonScaffold extends StatefulWidget {
-  const CommonScaffold({
-    super.key,
-    required this.appBar,
-    required this.body,
-    this.bottomNavigationBar
-  });
+  const CommonScaffold(
+      {super.key,
+      required this.appBar,
+      required this.body,
+      this.bottomNavigationBar});
 
   final PreferredSizeWidget appBar;
   final Widget body;
@@ -36,9 +35,10 @@ class _CommonScaffoldState extends State<CommonScaffold> {
         ),
       );
     }
-    
+
     if (identifier == 'waiter_screen') {
-      await Navigator.of(context).push(  // TODO Don't use 'BuildContext's across async gaps
+      await Navigator.of(context).push(
+        // TODO Don't use 'BuildContext's across async gaps
         MaterialPageRoute(
           builder: (ctx) => const WaiterScreen(),
         ),

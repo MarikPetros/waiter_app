@@ -7,5 +7,4 @@ class ReportsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(child: Text('Лист разных типов отчетов'));
   }
-
 }

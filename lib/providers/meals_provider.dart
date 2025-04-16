@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:image/image.dart' as img;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart' as syspaths;
-import 'package:sqflite/sqflite.dart'as sqflite;
+import 'package:sqflite/sqflite.dart' as sqflite;
 import 'package:sqflite_common/sqflite.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:waiter_app/model/meal.dart';
@@ -29,7 +29,8 @@ class MealsDatabaseHelper {
 
   MealsDatabaseHelper._privateConstructor();
 
-  static final MealsDatabaseHelper instance = MealsDatabaseHelper._privateConstructor();
+  static final MealsDatabaseHelper instance =
+      MealsDatabaseHelper._privateConstructor();
 
   static Database? _database;
 
@@ -136,7 +137,8 @@ class MealsNotifier extends StateNotifier<List<Meal>> {
 
   factory MealsNotifier.withDatabase(MealsDatabaseHelper mealsDatabaseHelper) {
     final notifier = MealsNotifier();
-    notifier._mealsDatabaseHelper = mealsDatabaseHelper; // Set the database helper
+    notifier._mealsDatabaseHelper =
+        mealsDatabaseHelper; // Set the database helper
     return notifier;
   }
 
@@ -205,9 +207,9 @@ class MealsNotifier extends StateNotifier<List<Meal>> {
     final imageData = await _downloadAndConvertImage(meal.imageUrl);
     if (imageData != null) {
       final imagePath = await _saveImageToStorage(imageData, meal.id);
-      await MealsDatabaseHelper.instance._updateMealWithImageData(meal, imagePath);
-      updateMealImageData(meal.id,
-          imagePath);
+      await MealsDatabaseHelper.instance
+          ._updateMealWithImageData(meal, imagePath);
+      updateMealImageData(meal.id, imagePath);
     }
   }
 

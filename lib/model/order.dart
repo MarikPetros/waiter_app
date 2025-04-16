@@ -8,7 +8,7 @@ class Order {
     required this.tableId,
     required this.orderedMeals,
     DateTime? creationDate,
-  }): creationDate = creationDate ?? DateTime.now();
+  }) : creationDate = creationDate ?? DateTime.now();
 
   int? number;
   final int tableId;
@@ -59,20 +59,11 @@ class Order {
     final Map<String, dynamic> mealMap = jsonDecode(orderedMealsString);
     final Map<MealData, int> orderedMeals = {};
     mealMap.forEach((mealName, mealData) {
-      final meal = MealData(name: mealName, price: mealData['meal_price']); // Create MealData object
+      final meal = MealData(
+          name: mealName,
+          price: mealData['meal_price']); // Create MealData object
       orderedMeals[meal] = mealData['quantity'];
     });
     return orderedMeals;
   }
-
-  // // Add a method to update the order in the database
-  // void updateOrder(Map<MealData, int> newOrderedMeals) {
-  //   orderedMeals = newOrderedMeals;
-  // }
-  // // Add a method to update the order in the database
-  // void updateOrderNumber(int newNumber) {
-  //   number = newNumber;
-  // }
 }
-
-

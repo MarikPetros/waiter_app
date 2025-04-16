@@ -23,17 +23,17 @@ class OrderCard extends StatefulWidget {
 class _OrderCardState extends State<OrderCard> {
   bool _isPaid = false;
 
-
   @override
   void initState() {
     super.initState();
-    _isPaid = widget.isPaid; // Initialize the local state from the widget's parameter
+    _isPaid =
+        widget.isPaid; // Initialize the local state from the widget's parameter
   }
 
   @override
   Widget build(BuildContext context) {
     final table = tables[widget.order.tableId];
-    
+
     void handleTableTap(int tableId) {
       setState(() {
         _isPaid = !_isPaid; // Toggle the paid state
@@ -54,18 +54,20 @@ class _OrderCardState extends State<OrderCard> {
               height: 80,
               child: Container(
                 decoration: BoxDecoration(
-                  color: _isPaid ? Colors.greenAccent :
-                  table.luxury == 'Vip1'
-                      ? Colors.amber.shade100
-                      : Colors.lightBlue.withOpacity(0.3),
+                  color: _isPaid
+                      ? Colors.greenAccent
+                      : table.luxury == 'Vip1'
+                          ? Colors.amber.shade100
+                          : Colors.lightBlue.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Center(
                   child: Icon(
-                    _isPaid ? Icons.add_card_sharp :
-                    table.luxury == 'Vip1'
-                        ? Icons.table_restaurant
-                        : Icons.chair_outlined,
+                    _isPaid
+                        ? Icons.add_card_sharp
+                        : table.luxury == 'Vip1'
+                            ? Icons.table_restaurant
+                            : Icons.chair_outlined,
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
@@ -86,24 +88,36 @@ class _OrderCardState extends State<OrderCard> {
                       children: [
                         Text(
                           'Посетитель',
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
                                 color: Theme.of(context).colorScheme.secondary,
                               ),
                         ),
                         Row(children: [
                           Text(
                             ('№${widget.order.number}'),
-                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: Theme.of(context).colorScheme.secondary,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                 ),
                           ),
                           const SizedBox(
                             width: 16,
                           ),
                           Text(
-                            DateFormat('HH.mm').format(widget.order.creationDate),
-                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: Theme.of(context).colorScheme.secondary,
+                            DateFormat('HH.mm')
+                                .format(widget.order.creationDate),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                 ),
                           ),
                         ]),
@@ -118,14 +132,20 @@ class _OrderCardState extends State<OrderCard> {
                       children: [
                         Text(
                           table.furniture,
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
                                 color: Theme.of(context).colorScheme.onSurface,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
                         Text(
                           widget.order.orderPrice.toString(),
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(
                                 color: Theme.of(context).colorScheme.onSurface,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -142,4 +162,3 @@ class _OrderCardState extends State<OrderCard> {
     );
   }
 }
-

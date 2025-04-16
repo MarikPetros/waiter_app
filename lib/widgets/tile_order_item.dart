@@ -35,17 +35,11 @@ class _TileOrderItemState extends State<TileOrderItem> {
 
   @override
   Widget build(BuildContext context) {
-    //**********************************************
-    // final String mealPrice = (widget.meal.discountedPrice != null
-    //         ? widget.meal.discountedPrice!
-    //         : widget.meal.price)
-    //     .toStringAsFixed(2);
-
     final mealPrice = widget.meal.discountedPrice != null
         ? widget.meal.discountedPrice!
         : widget.meal.price;
-    //**********************************
-    final String mealTotalPrice = ( mealPrice * _quantity).toStringAsFixed(1);
+
+    final String mealTotalPrice = (mealPrice * _quantity).toStringAsFixed(1);
 
     return GestureDetector(
       onLongPress: () {
@@ -69,8 +63,7 @@ class _TileOrderItemState extends State<TileOrderItem> {
                       children: [
                         Text(widget.meal.name),
                         _isLongPressed
-                            ? Text(
-                                '$mealPrice x $_quantity = $mealTotalPrice')
+                            ? Text('$mealPrice x $_quantity = $mealTotalPrice')
                             : Text(mealTotalPrice),
                       ],
                     ),

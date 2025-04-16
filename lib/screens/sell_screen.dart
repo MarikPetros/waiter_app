@@ -52,16 +52,14 @@ class _SellScreenState extends ConsumerState<SellScreen> {
   }
 
   Future<void> _updateOrderAndMeals() async {
-    if(orderedMeals.isEmpty) {
+    if (orderedMeals.isEmpty) {
       try {
-        await ref
-            .read(ordersProvider.notifier).deleteOrder(widget.orderNumber);
+        await ref.read(ordersProvider.notifier).deleteOrder(widget.orderNumber);
       } catch (error) {
         // Handle errors here (e.g., log the error, show a message)
         print('Error removing order: $error');
       }
-    }
-    else {
+    } else {
       final newOrderedMeals = convertOrderedMeals(orderedMeals);
       try {
         await ref
@@ -151,7 +149,7 @@ class _SellScreenState extends ConsumerState<SellScreen> {
                                     itemCount: orderedMeals.length,
                                     itemBuilder: (context, index) {
                                       final meal =
-                                      orderedMeals.keys.elementAt(index);
+                                          orderedMeals.keys.elementAt(index);
                                       var quantity = orderedMeals[meal]!;
                                       return TileOrderItem(
                                         key: ValueKey(meal.id),
@@ -179,53 +177,50 @@ class _SellScreenState extends ConsumerState<SellScreen> {
                           flex: 2,
                           // child: SizedBox(
                           //   height: mealsPartSize - 36,
-                            // child: Flexible(
-                              child: Row(
-                                children: [
-                                  Flexible(
-                                    child: Column(
-                                      children: [
-                                        TitleCard(
-                                            cardSize: cardSize,
-                                            label: 'Напитки'),
-                                        Flexible(
-                                          child: ListView.builder(
-                                            shrinkWrap: true,
-                                            itemCount: beverages.length,
-                                            itemBuilder: (ctx, index) =>
-                                                MealCard(
-                                              cardSize: cardSize,
-                                              meal: beverages[index],
-                                              onMealTap: handleMealTap,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Flexible(
-                                    child: Column(
-                                      children: [
-                                        TitleCard(
-                                            cardSize: cardSize, label: 'Блюда'),
-                                        Flexible(
-                                          child: ListView.builder(
-                                            shrinkWrap: true,
-                                            itemCount: foods.length,
-                                            itemBuilder: (ctx, index) =>
-                                                MealCard(
-                                              cardSize: cardSize,
-                                              meal: foods[index],
-                                              onMealTap: handleMealTap,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
+                          // child: Flexible(
+                          child: Row(
+                            children: [
+                              Flexible(
+                                child: Column(
+                                  children: [
+                                    TitleCard(
+                                        cardSize: cardSize, label: 'Напитки'),
+                                    Flexible(
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        itemCount: beverages.length,
+                                        itemBuilder: (ctx, index) => MealCard(
+                                          cardSize: cardSize,
+                                          meal: beverages[index],
+                                          onMealTap: handleMealTap,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                            // ),
+                              Flexible(
+                                child: Column(
+                                  children: [
+                                    TitleCard(
+                                        cardSize: cardSize, label: 'Блюда'),
+                                    Flexible(
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        itemCount: foods.length,
+                                        itemBuilder: (ctx, index) => MealCard(
+                                          cardSize: cardSize,
+                                          meal: foods[index],
+                                          onMealTap: handleMealTap,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          // ),
                           // ),
                         ),
                         Padding(

@@ -14,7 +14,8 @@ class OrdersDatabaseHelper {
 
   OrdersDatabaseHelper._privateConstructor();
 
-  static final OrdersDatabaseHelper instance = OrdersDatabaseHelper._privateConstructor();
+  static final OrdersDatabaseHelper instance =
+      OrdersDatabaseHelper._privateConstructor();
 
   static Database? _database;
 
@@ -148,7 +149,9 @@ class OrdersNotifier extends StateNotifier<List<Order>> {
   Future<void> deleteOrder(int orderNumber) async {
     final databaseHelper = OrdersDatabaseHelper.instance;
     await databaseHelper.deleteOrder(orderNumber);
-    state = state.where((order) => order.number != orderNumber).toList();// Update the state
+    state = state
+        .where((order) => order.number != orderNumber)
+        .toList(); // Update the state
   }
 
   // Method to update meal price
@@ -162,10 +165,11 @@ class OrdersNotifier extends StateNotifier<List<Order>> {
         // Create a new map with the updated MealData and quantity
         final updatedOrderedMeals = Map<MealData, int>.from(order.orderedMeals);
         updatedOrderedMeals[MealData(name: mealName, price: newPrice)] =
-        updatedOrderedMeals[updatedOrderedMeals.keys
-            .firstWhere((mealData) => mealData.name == mealName)]!;
+            updatedOrderedMeals[updatedOrderedMeals.keys
+                .firstWhere((mealData) => mealData.name == mealName)]!;
         updatedOrderedMeals.remove(updatedOrderedMeals.keys.firstWhere(
-                (mealData) => mealData.name == mealName && mealData.price != newPrice));
+            (mealData) =>
+                mealData.name == mealName && mealData.price != newPrice));
 
         // Return a new Order object with the updated orderedMeals
         return Order(
@@ -186,7 +190,8 @@ class OrdersNotifier extends StateNotifier<List<Order>> {
   }
 
   // Add a new method to update the order and save to the database
-  Future<void> updateOrder(int orderNumber, Map<MealData, int> newOrderedMeals) async {
+  Future<void> updateOrder(
+      int orderNumber, Map<MealData, int> newOrderedMeals) async {
     final databaseHelper = OrdersDatabaseHelper.instance;
     final order = await databaseHelper.getOrder(orderNumber);
 

@@ -15,7 +15,6 @@ class MealCard extends StatefulWidget {
   final Meal meal;
   final Function(Meal) onMealTap;
 
-
   @override
   State<MealCard> createState() => _MealCardState();
 }
